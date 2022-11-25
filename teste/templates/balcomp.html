@@ -1,0 +1,154 @@
+{% extends 'header.html' %}
+
+{% block content %}
+<form action="{{url_for('calculo_balcomp')}}" method="post">
+  <section class="jumbotron container my-3" style="color: green; margin-top: 120px; padding-top: 50px">
+           
+    <h2 class="mx-3 my-3 py-3 text-center" style="margin-top: 50px;">Insira os dados obtidos de destilação</h2>
+      <div class="form-row mx-3" style="margin-top: 30px;">
+        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+          <label class="col-form-label col-form-label-lg">Insira a densidade do óleo</label>
+          <input type="number" min="0" step="0.0001" placeholder="em g/cm³" class="form-control form-control-lg" id="rho_oleo" name="rho_oleo">
+        </div>
+
+        <div class="form-group col-lg-6 col-md-6 col-sm-12">            
+          <label class="col-form-label col-form-label-lg">Insira a temperatura realizada</label>
+          <input type="number" placeholder="em Celsius" class="form-control form-control-lg" id="temp_oleo" name="temp_oleo">
+        </div>
+      </div>
+
+      <div class="form-row mx-3">
+        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+          <label class="col-form-label col-form-label-lg">Insira a massa de óleo</label>
+          <input type="number" min="0" step="0.1" placeholder="em gramas" class="form-control form-control-lg" id="m_oleo" name="m_oleo">
+        </div>
+
+        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+          <label class="col-form-label col-form-label-lg">Insira a massa de resíduo</label>
+          <input type="number" min="0" step="0.1" placeholder="em gramas" class="form-control form-control-lg" id="mas_res" name="mas_res">
+        </div>
+      </div>
+
+      <div class="form-row mx-3" style="margin-top: 30px;">
+        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+          <label class="col-form-label col-form-label-lg">Insira a densidade do resíduo</label>
+          <input type="number" min="0" step="0.0001" placeholder="em g/cm³" class="form-control form-control-lg" id="rho_oleo" name="rho_res">
+        </div>
+
+        <div class="form-group col-lg-6 col-md-6 col-sm-12">            
+          <label class="col-form-label col-form-label-lg">Insira a temperatura realizada</label>
+          <input type="number" placeholder="em Celsius" class="form-control form-control-lg" id="temp_oleo" name="temp_res">
+        </div>
+      </div>
+
+      <div class="form-row mx-3">
+        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+          <label class="col-form-label col-form-label-lg">Insira o percentual mássico de leves</label>
+          <input type="number" min="0" step="0.01" placeholder="em %" class="form-control form-control-lg" id="perc_mas" name="perc_mas">
+        </div>
+
+        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+          <label class="col-form-label col-form-label-lg">Insira o percentual volumétrico de leves</label>
+          <input type="number" min="0" step="0.01" placeholder="em %" class="form-control form-control-lg" id="perc_vol" name="perc_vol">
+        </div>
+      </div>
+
+      <div class="form-row mx-3">
+        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+          <label class="col-form-label col-form-label-lg">Insira a massa da Potstill</label>
+          <input type="number" min="0" step="0.1" placeholder="em gramas" class="form-control form-control-lg" id="m_oleo_p" name="m_oleo_p">
+        </div>
+
+        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+          <label class="col-form-label col-form-label-lg">Insira a massa de resíduo da Potstill</label>
+          <input type="number" min="0" step="0.1" placeholder="em gramas" class="form-control form-control-lg" id="mas_res_p" name="mas_res_p">
+        </div>
+      </div>
+
+      <div class="form-row mx-3" style="margin-top: 30px;">
+        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+          <label class="col-form-label col-form-label-lg">Insira a densidade do resíduo da Potstill</label>
+          <input type="number" min="0" step="0.0001" placeholder="em g/cm³" class="form-control form-control-lg" id="rho_res_p" name="rho_res_p">
+        </div>
+
+        <div class="form-group col-lg-6 col-md-6 col-sm-12">            
+          <label class="col-form-label col-form-label-lg">Insira a temperatura realizada</label>
+          <input type="number" placeholder="em Celsius" class="form-control form-control-lg" id="temp_res_p" name="temp_res_p">
+        </div>
+      </div>
+
+      <div class="form-row mx-3" style="margin-top: 30px;">
+         <div class="form-group col-lg-6 col-md-6 col-sm-12">            
+          <label class="col-form-label col-form-label-lg">Insira a fração em que começa a Potstill</label>
+          <input type="number" class="form-control form-control-lg" id="frac_pot" name="frac_pot">
+        </div>
+      </div>
+
+
+  </section>
+
+  <div class="container">
+    <div class="row clearfix">
+      <div class="table-responsive col-md-12 column">
+          <table class="table table-bordered table-hover" id="tab_logic">
+            <thead>
+                                <tr>
+                                  <th class="text-center">
+                                    #
+                                  </th>
+                                  <th class="text-center">
+                                    AET (°C)
+                                  </th>
+                                  <th class="text-center">
+                                    Massa
+                                  </th>
+                                  <th class="text-center">
+                                    Dens
+                                  </th>
+
+                                  <th class="text-center">
+                                    Temp 
+                                  </th>
+                                  
+                                </tr>
+                              </thead>
+                              <tbody id="tabela">
+                                <tr id='addr0'>
+                                  <td>1</td>
+                                  <td>
+                                  <input type="number" name='temp'  placeholder='Em °C' class="form-control" id="temp" required>
+                                  </td>
+                                  <td>
+                                  <input type="number" min="0" step="0.1" name='massa' placeholder='Em gramas' class="form-control" id="massa" required>
+                                  </td>
+                                  <td>
+                                  <input type="number" min="0" step="0.0001" name='rho' placeholder='Em g/cc' class="form-control" id="rho">
+                                  </td>
+                                  <td>
+                                  <input type="number" name='rho_temp' placeholder='Em °C' class="form-control" id="rho_temp">
+                                  </td>
+                                </tr>
+                                  
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+
+    <div class="justify-content-center text-center mb-3 pb-3">
+      <button id="add_row" class="btn btn-default border border-dark bg-success text-white mx-1">Adiciona fração</button>
+      <button id='delete_row' class=" btn btn-default border border-dark bg-success text-white mx-1">Remove fração</button>
+    </div>
+  </div>
+
+  <div class="justify-content-center text-center mb-3 pb-3">
+    <button type="submit" class="btn btn-primary btn-salvar" style="min-width: 200px; background-color: green"/>Calcular balanço</button>
+  </div>
+</form>
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='eventos.js') }}"></script>
+	
+{% endblock %}

@@ -1,0 +1,191 @@
+{% extends 'header.html' %}
+
+{% block content %}
+<section class="jumbotron container my-3 mt-3" style="color: green; margin-top: 150px; padding-top: 100px">
+    <h2 class="mx-3 my-2 text-center">Resultados obtidos de destilação - MVD</h2>
+    <h4 class="mx-3 mt-2 text-center">Perdas nos {{resultado[21]}} de {{resultado[22]}}°API</h4>
+</section>
+
+<div class="container my-3">
+            <div class="row clearfix">
+                <div class="col-md-12 column table-responsive">
+                    <table class="table table-bordered table-hover table-striped border border-dark text-center justify-content-center" id="tab_logic" style="background-color: white;width: 100%">      
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Massa (g)</th>
+                                    <th>Volume (mL)</th>
+                                    
+                                    <th>API</th>
+                                    <th>% Massa</th>
+                                    <th>% Volume</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="a">Carga</td>
+                                    <td class="m_o">{{resultado[0]}}</td>
+                                    <td class="v_o">{{resultado[1]}}</td>
+                                    
+                                    <td class="api_o">{{resultado[16]}}</td>
+                                    <td class="pm_o">100.0</td>
+                                    <td class="pv_o">100.0</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="a">Leves</td>
+                                    <td class="m_l">{{resultado[14]}}</td>
+                                    <td class="v_l">{{resultado[15]}}</td>
+                                    
+                                    <td class="api_l">100.0</td>
+                                    <td class="pm_l">{{resultado[19]}}</td>
+                                    <td class="pv_l">{{resultado[20]}}</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="a">Destilado</td>
+                                    <td class="m_d">{{resultado[2]}}</td>
+                                    <td class="v_d">{{resultado[3]}}</td>
+                                    
+                                    <td class="api_d">{{resultado[17]}}</td>
+                                    <td class="pm_d">{{resultado[8]}}</td>
+                                    <td class="pv_d">{{resultado[9]}}</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="a">Resíduo</td>
+                                    <td class="m_r">{{resultado[4]}}</td>
+                                    <td class="v_r">{{resultado[5]}}</td>
+                                    
+                                    <td class="api_r">{{resultado[18]}}</td>
+                                    <td class="pm_r">{{resultado[10]}}</td>
+                                    <td class="pv_r">{{resultado[11]}}</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="a">Perdas</td>
+                                    <td class="m_p">{{resultado[6]}}</td>
+                                    <td class="v_p">{{resultado[7]}}</td>
+                                    
+                                    <td class="api_p"></td>
+                                    <td class="pm_p">{{resultado[12]}}</td>
+                                    <td class="pv_p">{{resultado[13]}}</td>
+                                </tr>
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+</div>
+
+
+<section class="jumbotron container my-3 mt-3" style="color: green; margin-top: 50px; padding-top: 10px">
+    <h2 class="mx-3 my-2 text-center">Resultados obtidos de destilação - Potstill</h2>
+    <h4 class="mx-3 mt-2 text-center">Perdas nos {{resultado_pot[17]}} de {{resultado_pot[18]}}°API</h4>
+</section>
+
+<div class="container my-3">
+            <div class="row clearfix">
+                <div class="col-md-12 column table-responsive">
+                    <table class="table table-bordered table-hover table-striped border border-dark text-center justify-content-center" id="tab_logic" style="background-color: white;width: 100%">      
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Massa (g)</th>
+                                    <th>Volume (mL)</th>
+                                    
+                                    <th>API</th>
+                                    <th>% Massa</th>
+                                    <th>% Volume</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="a">Carga</td>
+                                    <td class="m_o">{{resultado_pot[0]}}</td>
+                                    <td class="v_o">{{resultado_pot[1]}}</td>
+                                    
+                                    <td class="api_o">{{resultado_pot[14]}}</td>
+                                    <td class="pm_o">100.0</td>
+                                    <td class="pv_o">100.0</td>
+                                </tr>
+
+
+                                <tr>
+                                    <td class="a">Destilado</td>
+                                    <td class="m_d">{{resultado_pot[2]}}</td>
+                                    <td class="v_d">{{resultado_pot[3]}}</td>
+                                    
+                                    <td class="api_d">{{resultado_pot[15]}}</td>
+                                    <td class="pm_d">{{resultado_pot[8]}}</td>
+                                    <td class="pv_d">{{resultado_pot[9]}}</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="a">Resíduo</td>
+                                    <td class="m_r">{{resultado_pot[4]}}</td>
+                                    <td class="v_r">{{resultado_pot[5]}}</td>
+                                    
+                                    <td class="api_r">{{resultado_pot[16]}}</td>
+                                    <td class="pm_r">{{resultado_pot[10]}}</td>
+                                    <td class="pv_r">{{resultado_pot[11]}}</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="a">Perdas</td>
+                                    <td class="m_p">{{resultado_pot[6]}}</td>
+                                    <td class="v_p">{{resultado_pot[7]}}</td>
+                                    
+                                    <td class="api_p"></td>
+                                    <td class="pm_p">{{resultado_pot[12]}}</td>
+                                    <td class="pv_p">{{resultado_pot[13]}}</td>
+                                </tr>
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+</div>
+
+<section class="justify-content-center text-center container" style="color: green; margin-top: 30px; padding-top: 30px">
+     <h4 class="mx-3 mt-2 text-center">Perfil de destilados</h4>
+    <div class="text-center justify-content-center table-responsive">   
+                <table class="table table-striped table-bordered border border-dark border text-center justify-content-center" id="myTable" style="background-color: white;width: 100%">
+                    <thead style="width: 100%">
+                        <tr>
+                            <th>Fração</th>
+                            <th>AET</th>
+                            <th>Fr. mássica</th>
+                            <th>°API</th>
+                        </tr>
+                    </thead>
+
+                    <tbody style="width: 100%">
+                        {% for i in frac %}
+                            <tr class="curva">
+                                <td id="fr">{{loop.index0 + 1}}</td>
+                                <td class="{{aet[loop.index0]}}">{{ aet[loop.index0] }}</td>
+                                <td>{{ i }}</td>
+                                <td>{{ api[loop.index0] }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+    </div>
+
+    
+    <div class="row justify-content-center" style="margin-top: 10px; font-size: 20px; font-weight: bold">
+        <div class="form-group col-lg-6 col-md-12 justify-content-center" id="grafico" style="min-height: 300px">
+        </div>
+        <div class="form-group col-lg-6 col-md-12 justify-content-center" id="grafico2" style="min-height: 300px">
+        </div>
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="https://unpkg.com/mathjs/lib/browser/math.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+<script type=" https://www.numericjs.com/lib/numeric-1.2.6.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plotar.js') }}"></script>
+
+{% endblock %}
